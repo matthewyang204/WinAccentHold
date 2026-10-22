@@ -16,6 +16,8 @@ namespace WinAccentHold
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 MainForm = new Form1();
+            MainForm.Load += (sender, e) => WKeyScore.Start(MainForm);
+            MainForm.FormClosed += (sender, e) => WKeyScore.Stop();
             MainForm.Load += (sender, e) =>
             {
                 MainForm.Hide();
