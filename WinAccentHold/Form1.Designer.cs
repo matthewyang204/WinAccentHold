@@ -63,6 +63,7 @@
             this.ExitMenuButton.Name = "ExitMenuButton";
             this.ExitMenuButton.Size = new System.Drawing.Size(155, 36);
             this.ExitMenuButton.Text = "Exit";
+            this.ExitMenuButton.Click += new System.EventHandler(this.ExitMenuButton_Click);
             // 
             // Form1
             // 

@@ -23,5 +23,11 @@ namespace WinAccentHold
         {
 
         }
+
+        private void ExitMenuButton_Click(object sender, EventArgs e)
+        {
+            WinAccentHold.Visible = false;
+            Application.Exit();
+        }
     }
 }
