@@ -36,6 +36,9 @@ namespace WinAccentHold
                 bool pressed = msg == Down || msg == SysDown;
                 bool released = msg == Up || msg == SysUp;
 
+                if ((pressed || released) && (key.flags & Injected) == 0 && pending != null && pending.Vk != key.vk)
+                    CancelPending();
+
                 // Suppress the auto-repeat generated while the trigger is held.
                 if (pressed && (key.flags & Injected) == 0 && pending != null && pending.Vk == key.vk)
                     return (IntPtr)1;
@@ -43,13 +46,16 @@ namespace WinAccentHold
                 if (pressed && (key.flags & Injected) == 0 && pending == null && IsTrigger(key.vk))
                 {
                     string letter = ((char)key.vk).ToString().ToLowerInvariant();
-                    owner.BeginInvoke((MethodInvoker)delegate { Begin(letter, key.vk); });
-                    return (IntPtr)1;
+                    pending = new Pending(letter, key.vk);
+                    owner.BeginInvoke((MethodInvoker)BeginTimer);
+                    return CallNextHookEx(hook, code, message, data);
                 }
                 if (released && (key.flags & Injected) == 0 && pending != null && pending.Vk == key.vk)
                 {
-                    owner.BeginInvoke((MethodInvoker)Finish);
-                    return (IntPtr)1; // Suppress this key event
+                    Pending done = pending;
+                    pending = null;
+                    if (done.Timer != null) done.Timer.Dispose();
+                    return CallNextHookEx(hook, code, message, data);
                 }
             }
 
@@ -57,9 +63,20 @@ namespace WinAccentHold
         }
 
         static bool IsTrigger(uint vk) { return vk >= 'A' && vk <= 'Z' && db.mainDB.ContainsKey(((char)vk).ToString().ToLowerInvariant()); }
-        static void Begin(string letter, uint vk) { pending = new Pending(letter, vk); pending.Timer = new Timer { Interval = delay }; pending.Timer.Tick += delegate { pending.Timer.Stop(); pending.Held = true; if (TriggerKeyChanged != null) TriggerKeyChanged(pending.Letter, true); }; pending.Timer.Start(); }
-        static void Finish() { if (pending == null) return; Pending done = pending; pending = null; done.Timer.Dispose(); if (!done.Held) SendKey(done.Vk); if (TriggerKeyChanged != null) TriggerKeyChanged(done.Letter, false); }
-        static void SendKey(uint vk) { keybd_event((byte)vk, 0, 0, UIntPtr.Zero); keybd_event((byte)vk, 0, 2, UIntPtr.Zero); }
+        static void CancelPending() { if (pending == null) return; if (pending.Timer != null) { pending.Timer.Stop(); pending.Timer.Dispose(); } pending = null; }
+        static void BeginTimer()
+        {
+            Pending current = pending;
+            if (current == null) return;
+            current.Timer = new Timer { Interval = delay };
+            current.Timer.Tick += delegate
+            {
+                if (pending != current) { current.Timer.Stop(); current.Timer.Dispose(); return; }
+                current.Timer.Stop(); current.Held = true;
+                if (TriggerKeyChanged != null) TriggerKeyChanged(current.Letter, true);
+            };
+            current.Timer.Start();
+        }
         sealed class Pending { public string Letter; public uint Vk; public bool Held; public Timer Timer; public Pending(string l, uint v) { Letter = l; Vk = v; } }
         delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
         [StructLayout(LayoutKind.Sequential)] struct Kbd { public uint vk, scan, flags, time; public IntPtr extra; }
@@ -67,6 +84,5 @@ namespace WinAccentHold
         [DllImport("user32.dll")] static extern bool UnhookWindowsHookEx(IntPtr hook);
         [DllImport("user32.dll")] static extern IntPtr CallNextHookEx(IntPtr hook, int code, IntPtr wParam, IntPtr lParam);
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)] static extern IntPtr GetModuleHandle(string moduleName);
-        [DllImport("user32.dll")] static extern void keybd_event(byte virtualKey, byte scanCode, uint flags, UIntPtr extraInfo);
     }
 }
