@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccentDB.cs" />
+    <Compile Include="CaretHelper.cs" />
     <Compile Include="SelectorWindow.cs">
       <SubType>Form</SubType>
     </Compile>
