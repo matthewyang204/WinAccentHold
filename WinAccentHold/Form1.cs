@@ -14,6 +14,14 @@ namespace WinAccentHold
         public Form1()
         {
             InitializeComponent();
+
+            WinAccentHold.Visible = true;
+            WinAccentHold.Text = "WinAccentHold";
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }
