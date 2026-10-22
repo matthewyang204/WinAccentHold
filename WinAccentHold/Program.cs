@@ -15,7 +15,13 @@ namespace WinAccentHold
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Form1 MainForm = new Form1();
+            MainForm.Load += (sender, e) =>
+            {
+                MainForm.Hide();
+                MainForm.ShowInTaskbar = false;
+            };
+            Application.Run(MainForm);
         }
     }
 }
