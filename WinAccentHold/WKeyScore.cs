@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -28,14 +28,29 @@ namespace WinAccentHold
         {
             if (code >= 0 && owner != null)
             {
-                int msg = message.ToInt32(); Kbd key = (Kbd)Marshal.PtrToStructure(data, typeof(Kbd));
-                bool pressed = msg == Down || msg == SysDown, released = msg == Up || msg == SysUp;
-                if ((pressed || released) && (key.flags & Injected) == 0 && IsTrigger(key.vk))
+                int msg = message.ToInt32();
+                Kbd key = (Kbd)Marshal.PtrToStructure(data, typeof(Kbd));
+
+                bool pressed = msg == Down || msg == SysDown;
+                bool released = msg == Up || msg == SysUp;
+
+                if ((pressed || released) &&
+                    (key.flags & Injected) == 0 &&
+                    IsTrigger(key.vk))
                 {
-                    string letter = ((char)key.vk).ToString().ToLowerInvariant();
-                    owner.BeginInvoke((MethodInvoker)delegate { if (TriggerKeyChanged != null) TriggerKeyChanged(letter, pressed); });
+                    string letter =
+                        ((char)key.vk).ToString().ToLowerInvariant();
+
+                    owner.BeginInvoke((MethodInvoker)delegate
+                    {
+                        if (TriggerKeyChanged != null)
+                            TriggerKeyChanged(letter, pressed);
+                    });
+
+                    return (IntPtr)1; // Suppress this key event
                 }
             }
+
             return CallNextHookEx(hook, code, message, data);
         }
 
