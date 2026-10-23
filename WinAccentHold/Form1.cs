@@ -11,6 +11,7 @@ namespace WinAccentHold
 {
     public partial class Form1 : Form
     {
+        private SelectorWindow selector;
         public Form1()
         {
             InitializeComponent();
@@ -35,18 +36,24 @@ namespace WinAccentHold
 
         public void OnKeyTrigger(String letter, bool pressed)
         {
+            if (!pressed) return;
             Dictionary<int, String> db = new AccentDB().mainDB[letter];
-            SelectorWindow Selector = new SelectorWindow(32, 200);
+            if (selector != null) selector.Close();
+            selector = new SelectorWindow(32, 200);
             System.Drawing.Point caret;
 
             CaretHelper.TryGetCaretPosition(out caret);
             System.Diagnostics.Debug.WriteLine("Caret: " + caret.ToString());
-            Selector.StartPosition = FormStartPosition.Manual;
-            Selector.Location = new System.Drawing.Point(caret.X, caret.Y - Selector.Height);
-            Selector.ShowInTaskbar = false;
-            Selector.TopMost = true;
-            Selector.Show();
-            Selector.Activate();
+            selector.StartPosition = FormStartPosition.Manual;
+            selector.ShowInTaskbar = false;
+            selector.TopMost = true;
+            selector.PopulateCharButtons(db);
+            selector.Location = new System.Drawing.Point(caret.X, Math.Max(0, caret.Y - selector.Height));
+            selector.CreateControl();
+            selector.Show();
+            selector.Update();
+            selector.BringToFront();
+            selector.Activate();
         }
     }
 }
