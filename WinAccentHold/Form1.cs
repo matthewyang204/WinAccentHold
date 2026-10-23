@@ -48,7 +48,12 @@ namespace WinAccentHold
             selector.ShowInTaskbar = false;
             selector.TopMost = true;
             selector.PopulateCharButtons(db);
-            selector.Location = new System.Drawing.Point(caret.X, Math.Max(0, caret.Y - selector.Height));
+            Screen screen = Screen.FromPoint(caret);
+            int x = Math.Max(screen.WorkingArea.Left,
+                Math.Min(caret.X, screen.WorkingArea.Right - selector.Width));
+            int y = Math.Max(screen.WorkingArea.Top,
+                Math.Min(caret.Y - selector.Height, screen.WorkingArea.Bottom - selector.Height));
+            selector.Location = new System.Drawing.Point(x, y);
             selector.CreateControl();
             selector.Show();
             selector.Update();

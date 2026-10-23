@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Windows.Automation;
 
 namespace WinAccentHold
 {
@@ -60,9 +61,8 @@ namespace WinAccentHold
             GUITHREADINFO info = new GUITHREADINFO();
             info.cbSize = Marshal.SizeOf(typeof(GUITHREADINFO));
 
-            if (!GetGUIThreadInfo(threadId, ref info) ||
-                info.hwndCaret == IntPtr.Zero)
-                return false;
+            if (!GetGUIThreadInfo(threadId, ref info) || info.hwndCaret == IntPtr.Zero)
+                return TryGetAutomationCaret(out position);
 
             POINT point = new POINT
             {
@@ -75,6 +75,24 @@ namespace WinAccentHold
 
             position = new System.Drawing.Point(point.X, point.Y);
             return true;
+        }
+
+        private static bool TryGetAutomationCaret(out System.Drawing.Point position)
+        {
+            position = System.Drawing.Point.Empty;
+            try
+            {
+                AutomationElement focused = AutomationElement.FocusedElement;
+                object value;
+                if (focused == null || !focused.TryGetCurrentPattern(TextPattern.Pattern, out value)) return false;
+                var range = ((TextPattern)value).GetSelection()[0];
+                var rectangles = range.GetBoundingRectangles();
+                if (rectangles == null || rectangles.Length == 0) return false;
+                position = new System.Drawing.Point((int)rectangles[0].Left, (int)rectangles[0].Top);
+                return true;
+            }
+            catch (ElementNotAvailableException) { return false; }
+            catch (InvalidOperationException) { return false; }
         }
 
         [DllImport("user32.dll")]
