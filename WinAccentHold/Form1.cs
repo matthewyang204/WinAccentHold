@@ -17,6 +17,9 @@ namespace WinAccentHold
 
             WinAccentHold.Visible = true;
             WinAccentHold.Text = "WinAccentHold";
+
+            WKeyScore.TriggerKeyChanged += OnKeyTrigger;
+            WKeyScore.Start(this);
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
@@ -28,6 +31,21 @@ namespace WinAccentHold
         {
             WinAccentHold.Visible = false;
             Application.Exit();
+        }
+
+        public void OnKeyTrigger(String letter, bool pressed)
+        {
+            Dictionary<int, String> db = new AccentDB().mainDB[letter];
+            SelectorWindow Selector = new SelectorWindow(32, 200);
+            System.Drawing.Point caret;
+
+            if (!CaretHelper.TryGetCaretPosition(out caret))
+            {
+                caret = new System.Drawing.Point(0, 0);
+            }
+            Selector.StartPosition = FormStartPosition.Manual;
+            Selector.Location = caret;
+            Selector.Show();
         }
     }
 }
