@@ -42,6 +42,7 @@ namespace WinAccentHold
 
                 this.Close();
 
+                SendKeys.SendWait("{BACKSPACE}");
                 SendKeys.SendWait(selected);
             };
 
