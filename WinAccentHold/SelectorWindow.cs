@@ -27,11 +27,16 @@ namespace WinAccentHold
         [DllImport("user32.dll")]
         private static extern bool ShowWindow(IntPtr window, int command);
 
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetForegroundWindow();
+
         FlowLayoutPanel buttonPanel;
+        private readonly IntPtr targetWindow;
 
         public SelectorWindow(int x, int y)
         {
             InitializeComponent();
+            targetWindow = GetForegroundWindow();
             this.FormBorderStyle = FormBorderStyle.None;
             this.ClientSize = new System.Drawing.Size(y, 64);
             this.BackColor = Color.White;
@@ -42,7 +47,7 @@ namespace WinAccentHold
             buttonPanel.AutoScroll = false;
             buttonPanel.WrapContents = false;
             buttonPanel.FlowDirection = FlowDirection.LeftToRight;
-            buttonPanel.Padding = new Padding(5);
+            buttonPanel.Padding = new Padding(0);
             buttonPanel.BackColor = Color.White;
             buttonPanel.Visible = true;
 
@@ -65,10 +70,10 @@ namespace WinAccentHold
         public void AddCharButton(int index, String character){
             Button button = new Button();
 
-            button.Text = index + character;
-            button.Size = new Size(50, 40);
+            button.Text = index + " " + character;
+            button.Size = new Size(80, 40);
             button.Margin = new Padding(4);
-            button.Font = new Font("Segoe UI", 14);
+            button.Font = new Font("Segoe UI", 10);
             button.BackColor = Color.White;
             button.ForeColor = Color.Black;
             button.Visible = true;
@@ -78,7 +83,7 @@ namespace WinAccentHold
                 string selected = character;
 
                 this.Close();
-
+                if (targetWindow != IntPtr.Zero) SetForegroundWindow(targetWindow);
                 SendKeys.SendWait("{BACKSPACE}");
                 SendKeys.SendWait(selected);
             };

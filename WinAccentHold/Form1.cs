@@ -39,7 +39,7 @@ namespace WinAccentHold
             if (!pressed) return;
             Dictionary<int, String> db = new AccentDB().mainDB[letter];
             if (selector != null) selector.Close();
-            selector = new SelectorWindow(32, 200);
+            selector = new SelectorWindow(80, 200);
             System.Drawing.Point caret;
 
             CaretHelper.TryGetCaretPosition(out caret);
