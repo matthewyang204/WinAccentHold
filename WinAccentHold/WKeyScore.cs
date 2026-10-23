@@ -45,7 +45,11 @@ namespace WinAccentHold
 
                 if (pressed && (key.flags & Injected) == 0 && pending == null && IsTrigger(key.vk))
                 {
-                    string letter = ((char)key.vk).ToString().ToLowerInvariant();
+                    bool shifted = (GetKeyState(0x10) & 0x8000) != 0;
+                    bool capsLocked = (GetKeyState(0x14) & 1) != 0;
+                    bool uppercase = shifted ^ capsLocked;
+                    string letter = ((char)key.vk).ToString();
+                    letter = uppercase ? letter.ToUpperInvariant() : letter.ToLowerInvariant();
                     pending = new Pending(letter, key.vk);
                     owner.BeginInvoke((MethodInvoker)BeginTimer);
                     return CallNextHookEx(hook, code, message, data);
@@ -84,5 +88,6 @@ namespace WinAccentHold
         [DllImport("user32.dll")] static extern bool UnhookWindowsHookEx(IntPtr hook);
         [DllImport("user32.dll")] static extern IntPtr CallNextHookEx(IntPtr hook, int code, IntPtr wParam, IntPtr lParam);
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)] static extern IntPtr GetModuleHandle(string moduleName);
+        [DllImport("user32.dll")] static extern short GetKeyState(int key);
     }
 }
