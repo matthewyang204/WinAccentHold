@@ -34,6 +34,14 @@ namespace WinAccentHold
             Application.Exit();
         }
 
+        private void AboutMenuButton_Click(object sender, EventArgs e)
+        {
+            About aboutdialog = new About();
+            aboutdialog.Show();
+            aboutdialog.BringToFront();
+            aboutdialog.Activate();
+        }
+
         public void OnKeyTrigger(String letter, bool pressed)
         {
             if (!pressed) return;

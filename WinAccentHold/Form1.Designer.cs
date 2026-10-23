@@ -57,6 +57,7 @@
             this.AboutMenuButton.Name = "AboutMenuButton";
             this.AboutMenuButton.Size = new System.Drawing.Size(155, 36);
             this.AboutMenuButton.Text = "About";
+            this.AboutMenuButton.Click += new System.EventHandler(this.AboutMenuButton_Click);
             // 
             // ExitMenuButton
             // 
