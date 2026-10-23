@@ -18,5 +18,10 @@ namespace WinAccentHold
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(linkLabel1.Text);
+        }
     }
 }
