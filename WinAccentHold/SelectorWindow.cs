@@ -38,7 +38,7 @@ namespace WinAccentHold
             InitializeComponent();
             targetWindow = GetForegroundWindow();
             this.FormBorderStyle = FormBorderStyle.None;
-            this.ClientSize = new System.Drawing.Size(y, 64);
+            this.ClientSize = new System.Drawing.Size(y, 1);
             this.KeyPreview = true;
             this.BackColor = Color.White;
             this.ControlBox = false;
@@ -130,7 +130,13 @@ namespace WinAccentHold
             int width = this.Padding.Horizontal + buttonPanel.Padding.Horizontal;
             foreach (Control control in buttonPanel.Controls)
                 width += control.Width + control.Margin.Horizontal;
-            this.ClientSize = new Size(Math.Max(200, width), 64);
+            int height = buttonPanel.Padding.Vertical;
+            if (buttonPanel.Controls.Count > 0)
+            {
+                Control first = buttonPanel.Controls[0];
+                height += first.Height + first.Margin.Vertical;
+            }
+            this.ClientSize = new Size(Math.Max(200, width), height);
             buttonPanel.PerformLayout();
         }
     }
