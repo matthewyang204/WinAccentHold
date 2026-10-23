@@ -39,6 +39,7 @@ namespace WinAccentHold
             targetWindow = GetForegroundWindow();
             this.FormBorderStyle = FormBorderStyle.None;
             this.ClientSize = new System.Drawing.Size(y, 64);
+            this.KeyPreview = true;
             this.BackColor = Color.White;
             this.ControlBox = false;
 
@@ -53,6 +54,32 @@ namespace WinAccentHold
 
             this.Controls.Add(buttonPanel);
             buttonPanel.BringToFront();
+            this.KeyDown += SelectorWindow_KeyDown;
+            this.Deactivate += delegate { Close(); };
+        }
+
+        private void SelectorWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            int index = -1;
+            if (e.KeyCode >= Keys.D1 && e.KeyCode <= Keys.D9)
+                index = e.KeyCode - Keys.D1;
+            else if (e.KeyCode >= Keys.NumPad1 && e.KeyCode <= Keys.NumPad9)
+                index = e.KeyCode - Keys.NumPad1;
+
+            if (index >= 0 && index < buttonPanel.Controls.Count)
+            {
+                Button button = buttonPanel.Controls[index] as Button;
+                if (button != null) button.PerformClick();
+                else Close();
+            }
+            else
+            {
+                // Zero, Escape, and every non-selection key dismiss the picker.
+                Close();
+            }
+
+            e.Handled = true;
+            e.SuppressKeyPress = true;
         }
 
         protected override void OnShown(EventArgs e)
