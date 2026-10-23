@@ -13,6 +13,7 @@ namespace WinAccentHold
         [STAThread]
         static void Main()
         {
+            DPIHelper.EnableDPIAwareness();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 MainForm = new Form1();
