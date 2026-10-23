@@ -67,7 +67,7 @@ namespace WinAccentHold
             POINT point = new POINT
             {
                 X = info.rcCaret.Left,
-                Y = info.rcCaret.Bottom
+                Y = info.rcCaret.Top
             };
 
             if (!ClientToScreen(info.hwndCaret, ref point))

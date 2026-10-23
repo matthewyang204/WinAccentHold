@@ -39,13 +39,14 @@ namespace WinAccentHold
             SelectorWindow Selector = new SelectorWindow(32, 200);
             System.Drawing.Point caret;
 
-            if (!CaretHelper.TryGetCaretPosition(out caret))
-            {
-                caret = new System.Drawing.Point(0, 0);
-            }
+            CaretHelper.TryGetCaretPosition(out caret);
+            System.Diagnostics.Debug.WriteLine("Caret: " + caret.ToString());
             Selector.StartPosition = FormStartPosition.Manual;
-            Selector.Location = caret;
+            Selector.Location = new System.Drawing.Point(caret.X, caret.Y - Selector.Height);
+            Selector.ShowInTaskbar = false;
+            Selector.TopMost = true;
             Selector.Show();
+            Selector.Activate();
         }
     }
 }
