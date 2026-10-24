@@ -45,11 +45,13 @@ namespace WinAccentHold
 
                 if (pressed && (key.flags & Injected) == 0 && pending == null && IsTrigger(key.vk))
                 {
-                    bool shifted = (GetKeyState(0x10) & 0x8000) != 0;
-                    bool capsLocked = (GetKeyState(0x14) & 1) != 0;
-                    bool uppercase = shifted ^ capsLocked;
-                    string letter = ((char)key.vk).ToString();
-                    letter = uppercase ? letter.ToUpperInvariant() : letter.ToLowerInvariant();
+                    string letter = GetTriggerLabel(key.vk);
+                    if (key.vk >= 'A' && key.vk <= 'Z')
+                    {
+                        bool shifted = (GetKeyState(0x10) & 0x8000) != 0;
+                        bool capsLocked = (GetKeyState(0x14) & 1) != 0;
+                        letter = (shifted ^ capsLocked) ? letter.ToUpperInvariant() : letter.ToLowerInvariant();
+                    }
                     pending = new Pending(letter, key.vk);
                     owner.BeginInvoke((MethodInvoker)BeginTimer);
                     return CallNextHookEx(hook, code, message, data);
@@ -66,7 +68,15 @@ namespace WinAccentHold
             return CallNextHookEx(hook, code, message, data);
         }
 
-        static bool IsTrigger(uint vk) { return vk >= 'A' && vk <= 'Z' && db.mainDB.ContainsKey(((char)vk).ToString().ToLowerInvariant()); }
+        static bool IsTrigger(uint vk) { string label = GetTriggerLabel(vk); return label != null && db.mainDB.ContainsKey(label.ToLowerInvariant()); }
+        static string GetTriggerLabel(uint vk)
+        {
+            if (vk >= 'A' && vk <= 'Z') return ((char)vk).ToString();
+            if (vk >= '0' && vk <= '9') return ((char)vk).ToString();
+            if (vk == 0xBD) return "-";
+            if (vk == 0xBB) return "=";
+            return null;
+        }
         static void CancelPending() { if (pending == null) return; if (pending.Timer != null) { pending.Timer.Stop(); pending.Timer.Dispose(); } pending = null; }
         static void BeginTimer()
         {

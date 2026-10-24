@@ -316,6 +316,67 @@ namespace WinAccentHold
             { 2, "\u017C" }, // ż - dot above
             { 3, "\u017E" }  // ž - caron
         };
+
+            mainDB["1"] = new Dictionary<int, String>
+        {
+            { 1, "\u00A1" }, // ¡ - inverted exclamation mark
+            { 2, "\u2044" }  // ⁄ - fraction slash
+        };
+            mainDB["2"] = new Dictionary<int, String>
+        {
+            { 1, "\u2122" }, // ™ - trademark sign
+            { 2, "\u20AC" }  // € - euro sign
+        };
+            mainDB["3"] = new Dictionary<int, String>
+        {
+            { 1, "\u00A3" }, // £ - pound sign
+            { 2, "\u2039" }  // ‹ - single left angle quotation mark
+        };
+            mainDB["4"] = new Dictionary<int, String>
+        {
+            { 1, "\u00A2" }, // ¢ - cent sign
+            { 2, "\u203A" }  // › - single right angle quotation mark
+        };
+            mainDB["5"] = new Dictionary<int, String>
+        {
+            { 1, "\u221E" }, // ∞ - infinity
+            { 2, "\uFB01" }  // ﬁ - Latin ligature fi
+        };
+            mainDB["6"] = new Dictionary<int, String>
+        {
+            { 1, "\u00A7" }, // § - section sign
+            { 2, "\uFB02" }  // ﬂ - Latin ligature fl
+        };
+            mainDB["7"] = new Dictionary<int, String>
+        {
+            { 1, "\u00B6" }, // ¶ - pilcrow sign
+            { 2, "\u2021" }  // ‡ - double dagger
+        };
+            mainDB["8"] = new Dictionary<int, String>
+        {
+            { 1, "\u2022" }, // • - bullet
+            { 2, "\u00B0" }  // ° - degree sign
+        };
+            mainDB["9"] = new Dictionary<int, String>
+        {
+            { 1, "\u00AA" }, // ª - feminine ordinal indicator
+            { 2, "\u00B7" }  // · - middle dot
+        };
+            mainDB["0"] = new Dictionary<int, String>
+        {
+            { 1, "\u00BA" }, // º - masculine ordinal indicator
+            { 2, "\u201A" }  // ‚ - single low-9 quotation mark
+        };
+            mainDB["-"] = new Dictionary<int, String>
+        {
+            { 1, "\u2013" }, // – - en dash
+            { 2, "\u2014" }  // — - em dash
+        };
+            mainDB["="] = new Dictionary<int, String>
+        {
+            { 1, "\u2260" }, // ≠ - not equal to
+            { 2, "\u00B1" }  // ± - plus-minus sign
+        };
         }
     }
 }
