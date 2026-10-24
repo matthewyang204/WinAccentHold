@@ -8,10 +8,12 @@ namespace WinAccentHold
     class AccentDB
     {
         public Dictionary<String, Dictionary<int, String>> mainDB;
+        public Dictionary<String, Dictionary<int, String>> altDB;
 
         public AccentDB()
         {
             mainDB = new Dictionary<String, Dictionary<int, String>>();
+            altDB = new Dictionary<String, Dictionary<int, String>>();
 
             mainDB["A"] = new Dictionary<int, String>
         {
@@ -377,6 +379,40 @@ namespace WinAccentHold
             { 1, "\u2260" }, // ≠ - not equal to
             { 2, "\u00B1" }  // ± - plus-minus sign
         };
+
+            altDB["B"] = new Dictionary<int, String> { { 1, "\u222B" }, { 2, "\u0131" } }; // ∫ / ı
+            altDB["D"] = new Dictionary<int, String> { { 1, "\u2202" }, { 2, "\u00CE" } }; // ∂ / Î
+            altDB["E"] = new Dictionary<int, String> { { 1, "\u00B4" }, { 2, "\u00B4" } }; // ´ / ´
+            altDB["F"] = new Dictionary<int, String> { { 1, "\u0192" }, { 2, "\u00CF" } }; // ƒ / Ï
+            altDB["G"] = new Dictionary<int, String> { { 1, "\u00A9" }, { 2, "\u02DD" } }; // © / ˝
+            altDB["H"] = new Dictionary<int, String> { { 1, "\u02D9" }, { 2, "\u00D3" } }; // ˙ / Ó
+            altDB["I"] = new Dictionary<int, String> { { 1, "\u02C6" }, { 2, "\u02C6" } }; // ˆ / ˆ
+            altDB["J"] = new Dictionary<int, String> { { 1, "\u2206" }, { 2, "\u00D4" } }; // ∆ / Ô
+            altDB["K"] = new Dictionary<int, String> { { 1, "\u02DA" }, { 2, "\uF8FF" } }; // ˚ / Apple logo
+            altDB["L"] = new Dictionary<int, String> { { 1, "\u00AC" }, { 2, "\u00D2" } }; // ¬ / Ò
+            altDB["M"] = new Dictionary<int, String> { { 1, "\u00B5" }, { 2, "\u00C2" } }; // µ / Â
+            altDB["N"] = new Dictionary<int, String> { { 1, "\u02DC" }, { 2, "\u02DC" } }; // ˜ / ˜
+            altDB["P"] = new Dictionary<int, String> { { 1, "\u03C0" }, { 2, "\u220F" } }; // π / ∏
+            altDB["Q"] = new Dictionary<int, String> { { 1, "\u0153" }, { 2, "\u0152" } }; // œ / Œ
+            altDB["R"] = new Dictionary<int, String> { { 1, "\u00AE" }, { 2, "\u2030" } }; // ® / ‰
+            altDB["S"] = new Dictionary<int, String> { { 1, "\u00DF" }, { 2, "\u00CD" } }; // ß / Í
+            altDB["T"] = new Dictionary<int, String> { { 1, "\u2020" }, { 2, "\u02C7" } }; // † / ˇ
+            altDB["U"] = new Dictionary<int, String> { { 1, "\u00A8" }, { 2, "\u00A8" } }; // ¨ / ¨
+            altDB["V"] = new Dictionary<int, String> { { 1, "\u221A" }, { 2, "\u25CA" } }; // √ / ◊
+            altDB["W"] = new Dictionary<int, String> { { 1, "\u2211" }, { 2, "\u201E" } }; // ∑ / „
+            altDB["X"] = new Dictionary<int, String> { { 1, "\u2248" }, { 2, "\u02DB" } }; // ≈ / ˛
+            altDB["Y"] = new Dictionary<int, String> { { 1, "\u00A5" }, { 2, "\u00C1" } }; // ¥ / Á
+            altDB["Z"] = new Dictionary<int, String> { { 1, "\u03A9" }, { 2, "\u00B8" } }; // Ω / ¸
+            altDB["GRAVE"] = new Dictionary<int, String> { { 1, "\u0300" }, { 2, "~" } }; // combining grave / tilde
+            altDB["["] = new Dictionary<int, String> { { 1, "\u201C" }, { 2, "\u201D" } }; // “ / ”
+            altDB["]"] = new Dictionary<int, String> { { 1, "\u2018" }, { 2, "\u2019" } }; // ‘ / ’
+            altDB["\\"] = new Dictionary<int, String> { { 1, "\u00AB" }, { 2, "\u00BB" } }; // « / »
+            altDB[";"] = new Dictionary<int, String> { { 1, "\u2026" }, { 2, "\u00DA" } }; // … / Ú
+            altDB["'"] = new Dictionary<int, String> { { 1, "\u00E6" }, { 2, "\u00C6" } }; // æ / Æ
+            altDB[","] = new Dictionary<int, String> { { 1, "\u2264" }, { 2, "\u00AF" } }; // ≤ / macron
+            altDB["."] = new Dictionary<int, String> { { 1, "\u2265" }, { 2, "\u02D8" } }; // ≥ / breve
+            altDB["/"] = new Dictionary<int, String> { { 1, "\u00F7" }, { 2, "\u00BF" } }; // ÷ / inverted question mark
+            altDB["SPACE"] = new Dictionary<int, String> { { 1, "\u00A0" } }; // non-breaking space
         }
     }
 }

@@ -7,8 +7,9 @@ namespace WinAccentHold
 {
     internal static class WKeyScore
     {
-        const int Hook = 13, Down = 0x100, Up = 0x101, SysDown = 0x104, SysUp = 0x105, Injected = 0x10;
+        const int Hook = 13, Down = 0x100, Up = 0x101, SysDown = 0x104, SysUp = 0x105, Injected = 0x10, AltDown = 0x20;
         static IntPtr hook; static HookProc proc; static Control owner; static AccentDB db; static Pending pending;
+        static bool altDown;
         public static event Action<string, bool> TriggerKeyChanged;
         const int delay = 600;
 
@@ -24,6 +25,7 @@ namespace WinAccentHold
             if (pending != null) { pending.Timer.Dispose(); pending = null; }
             if (hook != IntPtr.Zero) UnhookWindowsHookEx(hook);
             hook = IntPtr.Zero; proc = null; owner = null;
+            altDown = false;
         }
 
         static IntPtr Callback(int code, IntPtr message, IntPtr data)
@@ -35,6 +37,12 @@ namespace WinAccentHold
 
                 bool pressed = msg == Down || msg == SysDown;
                 bool released = msg == Up || msg == SysUp;
+                if (key.vk == 0x12 || key.vk == 0xA4 || key.vk == 0xA5)
+                {
+                    if (pressed) altDown = true;
+                    if (released) altDown = false;
+                }
+                bool alt = altDown;
 
                 if ((pressed || released) && (key.flags & Injected) == 0 && pending != null && pending.Vk != key.vk)
                     CancelPending();
@@ -43,15 +51,19 @@ namespace WinAccentHold
                 if (pressed && (key.flags & Injected) == 0 && pending != null && pending.Vk == key.vk)
                     return (IntPtr)1;
 
-                if (pressed && (key.flags & Injected) == 0 && pending == null && IsTrigger(key.vk))
+                if (pressed && (key.flags & Injected) == 0 && pending == null && IsTrigger(key.vk, alt))
                 {
                     string letter = GetTriggerLabel(key.vk);
                     if (key.vk >= 'A' && key.vk <= 'Z')
                     {
-                        bool shifted = (GetKeyState(0x10) & 0x8000) != 0;
-                        bool capsLocked = (GetKeyState(0x14) & 1) != 0;
+                        bool shifted = (GetAsyncKeyState(0x10) & 0x8000) != 0;
+                        bool capsLocked = (GetAsyncKeyState(0x14) & 1) != 0;
                         letter = (shifted ^ capsLocked) ? letter.ToUpperInvariant() : letter.ToLowerInvariant();
                     }
+                    string altKey = letter.Length == 1 && letter[0] >= 'a' && letter[0] <= 'z'
+                        ? letter.ToUpperInvariant()
+                        : letter;
+                    if (alt && db.altDB.ContainsKey(altKey)) letter = "ALT:" + altKey;
                     pending = new Pending(letter, key.vk);
                     owner.BeginInvoke((MethodInvoker)BeginTimer);
                     return CallNextHookEx(hook, code, message, data);
@@ -68,13 +80,29 @@ namespace WinAccentHold
             return CallNextHookEx(hook, code, message, data);
         }
 
-        static bool IsTrigger(uint vk) { string label = GetTriggerLabel(vk); return label != null && db.mainDB.ContainsKey(label.ToLowerInvariant()); }
+        static bool IsTrigger(uint vk, bool alt)
+        {
+            string label = GetTriggerLabel(vk);
+            if (label == null) return false;
+            if (db.mainDB.ContainsKey(label.ToLowerInvariant())) return true;
+            return alt && db.altDB.ContainsKey(label);
+        }
         static string GetTriggerLabel(uint vk)
         {
             if (vk >= 'A' && vk <= 'Z') return ((char)vk).ToString();
             if (vk >= '0' && vk <= '9') return ((char)vk).ToString();
             if (vk == 0xBD) return "-";
             if (vk == 0xBB) return "=";
+            if (vk == 0xC0) return "GRAVE";
+            if (vk == 0xDB) return "[";
+            if (vk == 0xDD) return "]";
+            if (vk == 0xDC) return "\\";
+            if (vk == 0xBA) return ";";
+            if (vk == 0xDE) return "'";
+            if (vk == 0xBC) return ",";
+            if (vk == 0xBE) return ".";
+            if (vk == 0xBF) return "/";
+            if (vk == 0x20) return "SPACE";
             return null;
         }
         static void CancelPending() { if (pending == null) return; if (pending.Timer != null) { pending.Timer.Stop(); pending.Timer.Dispose(); } pending = null; }
@@ -99,5 +127,6 @@ namespace WinAccentHold
         [DllImport("user32.dll")] static extern IntPtr CallNextHookEx(IntPtr hook, int code, IntPtr wParam, IntPtr lParam);
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)] static extern IntPtr GetModuleHandle(string moduleName);
         [DllImport("user32.dll")] static extern short GetKeyState(int key);
+        [DllImport("user32.dll")] static extern short GetAsyncKeyState(int key);
     }
 }

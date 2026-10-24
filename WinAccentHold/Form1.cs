@@ -45,7 +45,12 @@ namespace WinAccentHold
         public void OnKeyTrigger(String letter, bool pressed)
         {
             if (!pressed) return;
-            Dictionary<int, String> db = new AccentDB().mainDB[letter];
+            AccentDB accentDatabase = new AccentDB();
+            Dictionary<int, String> db;
+            if (letter.StartsWith("ALT:"))
+                db = accentDatabase.altDB[letter.Substring(4)];
+            else
+                db = accentDatabase.mainDB[letter];
             if (selector != null) selector.Close();
             selector = new SelectorWindow(80, 200);
             System.Drawing.Point caret;
