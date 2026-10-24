@@ -140,6 +140,182 @@ namespace WinAccentHold
             { 7, "\u1E47" }, // ṇ
             { 8, "\u1E49" }  // ṉ
         };
+
+            mainDB["B"] = new Dictionary<int, String>
+        {
+            { 1, "\u1E02" }  // Ḃ - dot above
+        };
+
+            mainDB["b"] = new Dictionary<int, String>
+        {
+            { 1, "\u1E03" }  // ḃ - dot above
+        };
+
+            mainDB["C"] = new Dictionary<int, String>
+        {
+            { 1, "\u00C7" }, // Ç - cedilla
+            { 2, "\u0106" }, // Ć - acute
+            { 3, "\u0108" }, // Ĉ - circumflex
+            { 4, "\u010C" }, // Č - caron
+            { 5, "\u010A" }  // Ċ - dot above
+        };
+
+            mainDB["c"] = new Dictionary<int, String>
+        {
+            { 1, "\u00E7" }, // ç - cedilla
+            { 2, "\u0107" }, // ć - acute
+            { 3, "\u0109" }, // ĉ - circumflex
+            { 4, "\u010D" }, // č - caron
+            { 5, "\u010B" }  // ċ - dot above
+        };
+
+            mainDB["D"] = new Dictionary<int, String>
+        {
+            { 1, "\u010E" }, // Ď - caron
+            { 2, "\u0110" }, // Đ - stroke
+            { 3, "\u00D0" }  // Ð - eth
+        };
+
+            mainDB["d"] = new Dictionary<int, String>
+        {
+            { 1, "\u010F" }, // ď - caron
+            { 2, "\u0111" }, // đ - stroke
+            { 3, "\u00F0" }  // ð - eth
+        };
+
+            mainDB["G"] = new Dictionary<int, String>
+        {
+            { 1, "\u011E" }, // Ğ - breve
+            { 2, "\u0120" }, // Ġ - dot above
+            { 3, "\u0122" }  // Ģ - cedilla
+        };
+
+            mainDB["g"] = new Dictionary<int, String>
+        {
+            { 1, "\u011F" }, // ğ - breve
+            { 2, "\u0121" }, // ġ - dot above
+            { 3, "\u0123" }  // ģ - cedilla
+        };
+
+            mainDB["H"] = new Dictionary<int, String>
+        {
+            { 1, "\u0124" }  // Ĥ - circumflex
+        };
+
+            mainDB["h"] = new Dictionary<int, String>
+        {
+            { 1, "\u0125" }  // ĥ - circumflex
+        };
+
+            mainDB["J"] = new Dictionary<int, String>
+        {
+            { 1, "\u0134" }  // Ĵ - circumflex
+        };
+
+            mainDB["j"] = new Dictionary<int, String>
+        {
+            { 1, "\u0135" }  // ĵ - circumflex
+        };
+
+            mainDB["K"] = new Dictionary<int, String>
+        {
+            { 1, "\u0136" }  // Ķ - cedilla
+        };
+
+            mainDB["k"] = new Dictionary<int, String>
+        {
+            { 1, "\u0137" }  // ķ - cedilla
+        };
+
+            mainDB["L"] = new Dictionary<int, String>
+        {
+            { 1, "\u0139" }, // Ĺ - acute
+            { 2, "\u013B" }, // Ļ - cedilla
+            { 3, "\u013D" }, // Ľ - caron
+            { 4, "\u0141" }  // Ł - stroke
+        };
+
+            mainDB["l"] = new Dictionary<int, String>
+        {
+            { 1, "\u013A" }, // ĺ - acute
+            { 2, "\u013C" }, // ļ - cedilla
+            { 3, "\u013E" }, // ľ - caron
+            { 4, "\u0142" }  // ł - stroke
+        };
+
+            mainDB["R"] = new Dictionary<int, String>
+        {
+            { 1, "\u0154" }, // Ŕ - acute
+            { 2, "\u0158" }  // Ř - caron
+        };
+
+            mainDB["r"] = new Dictionary<int, String>
+        {
+            { 1, "\u0155" }, // ŕ - acute
+            { 2, "\u0159" }  // ř - caron
+        };
+
+            mainDB["S"] = new Dictionary<int, String>
+        {
+            { 1, "\u015A" }, // Ś - acute
+            { 2, "\u015C" }, // Ŝ - circumflex
+            { 3, "\u015E" }, // Ş - cedilla
+            { 4, "\u0160" }, // Š - caron
+            { 5, "\u1E9E" }  // ẞ - sharp S
+        };
+
+            mainDB["s"] = new Dictionary<int, String>
+        {
+            { 1, "\u015B" }, // ś - acute
+            { 2, "\u015D" }, // ŝ - circumflex
+            { 3, "\u015F" }, // ş - cedilla
+            { 4, "\u0161" }, // š - caron
+            { 5, "\u00DF" }  // ß - sharp S
+        };
+
+            mainDB["T"] = new Dictionary<int, String>
+        {
+            { 1, "\u0162" }, // Ţ - cedilla
+            { 2, "\u0164" }, // Ť - caron
+            { 3, "\u0166" }, // Ŧ - stroke
+            { 4, "\u00DE" }  // Þ - thorn
+        };
+
+            mainDB["t"] = new Dictionary<int, String>
+        {
+            { 1, "\u0163" }, // ţ - cedilla
+            { 2, "\u0165" }, // ť - caron
+            { 3, "\u0167" }, // ŧ - stroke
+            { 4, "\u00FE" }  // þ - thorn
+        };
+
+            mainDB["Y"] = new Dictionary<int, String>
+        {
+            { 1, "\u00DD" }, // Ý - acute
+            { 2, "\u0176" }, // Ŷ - circumflex
+            { 3, "\u0178" }  // Ÿ - diaeresis
+        };
+
+            mainDB["y"] = new Dictionary<int, String>
+        {
+            { 1, "\u00FD" }, // ý - acute
+            { 2, "\u0177" }, // ŷ - circumflex
+            { 3, "\u00FF" }  // ÿ - diaeresis
+        };
+
+            mainDB["Z"] = new Dictionary<int, String>
+        {
+            { 1, "\u0179" }, // Ź - acute
+            { 2, "\u017B" }, // Ż - dot above
+            { 3, "\u017D" }  // Ž - caron
+        };
+
+            mainDB["z"] = new Dictionary<int, String>
+        {
+            { 1, "\u017A" }, // ź - acute
+            { 2, "\u017C" }, // ż - dot above
+            { 3, "\u017E" }  // ž - caron
+        };
         }
     }
 }
