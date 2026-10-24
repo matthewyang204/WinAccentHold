@@ -1,3 +1,6 @@
+WinAccentHold
+Copyright (c) Matthew Yang (杨佳明) 2026
+
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
