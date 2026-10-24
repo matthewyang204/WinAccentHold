@@ -98,7 +98,7 @@ namespace WinAccentHold
             Button button = new Button();
 
             button.Text = index + " " + character;
-            button.Size = new Size(80, 40);
+            button.Size = new Size(80, 50);
             button.Margin = new Padding(4);
             button.Font = new Font("Segoe UI", 10);
             button.BackColor = Color.White;
