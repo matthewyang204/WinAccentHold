@@ -415,30 +415,46 @@ namespace WinAccentHold
             altDB["SPACE"] = new Dictionary<int, String> { { 1, "\u00A0" } }; // non-breaking space
 
             altDB["A"][3] = "\u0104"; // Ą - ogonek
+            altDB["A"][4] = "\u0102"; // Ă - breve
+            altDB["A"][5] = "\u01FA"; // Ǻ - ring above and acute
             altDB["E"][3] = "\u0118"; // Ę - ogonek
             altDB["E"][4] = "\u0116"; // Ė - dot above
             altDB["E"][5] = "\u0114"; // Ĕ - breve
             altDB["I"][3] = "\u012E"; // Į - ogonek
             altDB["I"][4] = "\u0130"; // İ - dot above
+            altDB["I"][5] = "\u0128"; // Ĩ - tilde
             altDB["O"][3] = "\u00D5"; // Õ - tilde
             altDB["O"][4] = "\u0150"; // Ő - double acute
+            altDB["O"][5] = "\u014E"; // Ŏ - breve
+            altDB["O"][6] = "\u01EA"; // Ǫ - ogonek
             altDB["U"][3] = "\u016E"; // Ů - ring above
             altDB["U"][4] = "\u0170"; // Ű - double acute
             altDB["U"][5] = "\u0172"; // Ų - ogonek
+            altDB["U"][6] = "\u0168"; // Ũ - tilde
+            altDB["U"][7] = "\u016C"; // Ŭ - breve
             altDB["N"][3] = "\u014A"; // Ŋ - eng
+            altDB["N"][4] = "\u01F8"; // Ǹ - grave
 
             altDB["a"][3] = "\u0105"; // ą - ogonek
+            altDB["a"][4] = "\u0103"; // ă - breve
+            altDB["a"][5] = "\u01FB"; // ǻ - ring above and acute
             altDB["e"][3] = "\u0119"; // ę - ogonek
             altDB["e"][4] = "\u0117"; // ė - dot above
             altDB["e"][5] = "\u0115"; // ĕ - breve
             altDB["i"][3] = "\u012F"; // į - ogonek
             altDB["i"][4] = "\u0131"; // ı - dotless i
+            altDB["i"][5] = "\u0129"; // ĩ - tilde
             altDB["o"][3] = "\u00F5"; // õ - tilde
             altDB["o"][4] = "\u0151"; // ő - double acute
+            altDB["o"][5] = "\u014F"; // ŏ - breve
+            altDB["o"][6] = "\u01EB"; // ǫ - ogonek
             altDB["u"][3] = "\u016F"; // ů - ring above
             altDB["u"][4] = "\u0171"; // ű - double acute
             altDB["u"][5] = "\u0173"; // ų - ogonek
+            altDB["u"][6] = "\u0169"; // ũ - tilde
+            altDB["u"][7] = "\u016D"; // ŭ - breve
             altDB["n"][3] = "\u014B"; // ŋ - eng
+            altDB["n"][4] = "\u01F9"; // ǹ - grave
         }
     }
 }
