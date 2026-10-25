@@ -413,6 +413,32 @@ namespace WinAccentHold
             altDB["."] = new Dictionary<int, String> { { 1, "\u2265" }, { 2, "\u02D8" } }; // ≥ / breve
             altDB["/"] = new Dictionary<int, String> { { 1, "\u00F7" }, { 2, "\u00BF" } }; // ÷ / inverted question mark
             altDB["SPACE"] = new Dictionary<int, String> { { 1, "\u00A0" } }; // non-breaking space
+
+            altDB["A"][3] = "\u0104"; // Ą - ogonek
+            altDB["E"][3] = "\u0118"; // Ę - ogonek
+            altDB["E"][4] = "\u0116"; // Ė - dot above
+            altDB["E"][5] = "\u0114"; // Ĕ - breve
+            altDB["I"][3] = "\u012E"; // Į - ogonek
+            altDB["I"][4] = "\u0130"; // İ - dot above
+            altDB["O"][3] = "\u00D5"; // Õ - tilde
+            altDB["O"][4] = "\u0150"; // Ő - double acute
+            altDB["U"][3] = "\u016E"; // Ů - ring above
+            altDB["U"][4] = "\u0170"; // Ű - double acute
+            altDB["U"][5] = "\u0172"; // Ų - ogonek
+            altDB["N"][3] = "\u014A"; // Ŋ - eng
+
+            altDB["a"][3] = "\u0105"; // ą - ogonek
+            altDB["e"][3] = "\u0119"; // ę - ogonek
+            altDB["e"][4] = "\u0117"; // ė - dot above
+            altDB["e"][5] = "\u0115"; // ĕ - breve
+            altDB["i"][3] = "\u012F"; // į - ogonek
+            altDB["i"][4] = "\u0131"; // ı - dotless i
+            altDB["o"][3] = "\u00F5"; // õ - tilde
+            altDB["o"][4] = "\u0151"; // ő - double acute
+            altDB["u"][3] = "\u016F"; // ů - ring above
+            altDB["u"][4] = "\u0171"; // ű - double acute
+            altDB["u"][5] = "\u0173"; // ų - ogonek
+            altDB["n"][3] = "\u014B"; // ŋ - eng
         }
     }
 }
