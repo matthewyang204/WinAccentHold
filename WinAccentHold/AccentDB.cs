@@ -417,6 +417,33 @@ namespace WinAccentHold
             altDB["/"] = new Dictionary<int, String> { { 1, "\u00F7" }, { 2, "\u00BF" } }; // ÷ / inverted question mark
             altDB["SPACE"] = new Dictionary<int, String> { { 1, "\u00A0" } }; // non-breaking space
 
+            altDB["a"] = new Dictionary<int, String> { { 1, "\u00E5" }, { 2, "\u00C5" } }; // å / Å
+            altDB["b"] = new Dictionary<int, String> { { 1, "\u222B" }, { 2, "\u0131" } }; // ∫ / ı
+            altDB["c"] = new Dictionary<int, String> { { 1, "\u00E7" }, { 2, "\u00C7" } }; // ç / Ç
+            altDB["d"] = new Dictionary<int, String> { { 1, "\u2202" }, { 2, "\u00CE" } }; // ∂ / Î
+            altDB["e"] = new Dictionary<int, String> { { 1, "\u00B4" }, { 2, "\u00B4" } }; // ´ / ´
+            altDB["f"] = new Dictionary<int, String> { { 1, "\u0192" }, { 2, "\u00CF" } }; // ƒ / Ï
+            altDB["g"] = new Dictionary<int, String> { { 1, "\u00A9" }, { 2, "\u02DD" } }; // © / ˝
+            altDB["h"] = new Dictionary<int, String> { { 1, "\u02D9" }, { 2, "\u00D3" } }; // ˙ / Ó
+            altDB["i"] = new Dictionary<int, String> { { 1, "\u02C6" }, { 2, "\u02C6" } }; // ˆ / ˆ
+            altDB["j"] = new Dictionary<int, String> { { 1, "\u2206" }, { 2, "\u00D4" } }; // ∆ / Ô
+            altDB["k"] = new Dictionary<int, String> { { 1, "\u02DA" }, { 2, "\uF8FF" } }; // ˚ / Apple logo
+            altDB["l"] = new Dictionary<int, String> { { 1, "\u00AC" }, { 2, "\u00D2" } }; // ¬ / Ò
+            altDB["m"] = new Dictionary<int, String> { { 1, "\u00B5" }, { 2, "\u00C2" } }; // µ / Â
+            altDB["n"] = new Dictionary<int, String> { { 1, "\u02DC" }, { 2, "\u02DC" } }; // ˜ / ˜
+            altDB["o"] = new Dictionary<int, String> { { 1, "\u00F8" }, { 2, "\u00D8" } }; // ø / Ø
+            altDB["p"] = new Dictionary<int, String> { { 1, "\u03C0" }, { 2, "\u220F" } }; // π / ∏
+            altDB["q"] = new Dictionary<int, String> { { 1, "\u0153" }, { 2, "\u0152" } }; // œ / Œ
+            altDB["r"] = new Dictionary<int, String> { { 1, "\u00AE" }, { 2, "\u2030" } }; // ® / ‰
+            altDB["s"] = new Dictionary<int, String> { { 1, "\u00DF" }, { 2, "\u00CD" } }; // ß / Í
+            altDB["t"] = new Dictionary<int, String> { { 1, "\u2020" }, { 2, "\u02C7" } }; // † / ˇ
+            altDB["u"] = new Dictionary<int, String> { { 1, "\u00A8" }, { 2, "\u00A8" } }; // ¨ / ¨
+            altDB["v"] = new Dictionary<int, String> { { 1, "\u221A" }, { 2, "\u25CA" } }; // √ / ◊
+            altDB["w"] = new Dictionary<int, String> { { 1, "\u2211" }, { 2, "\u201E" } }; // ∑ / „
+            altDB["x"] = new Dictionary<int, String> { { 1, "\u2248" }, { 2, "\u02DB" } }; // ≈ / ˛
+            altDB["y"] = new Dictionary<int, String> { { 1, "\u00A5" }, { 2, "\u00C1" } }; // ¥ / Á
+            altDB["z"] = new Dictionary<int, String> { { 1, "\u03A9" }, { 2, "\u00B8" } }; // Ω / ¸
+
             altDB["A"][3] = "\u0104"; // Ą - ogonek
             altDB["A"][4] = "\u0102"; // Ă - breve
             altDB["A"][5] = "\u01FA"; // Ǻ - ring above and acute
