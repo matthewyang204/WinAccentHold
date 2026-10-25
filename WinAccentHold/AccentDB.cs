@@ -380,7 +380,9 @@ namespace WinAccentHold
             { 2, "\u00B1" }  // ± - plus-minus sign
         };
 
+            altDB["A"] = new Dictionary<int, String> { { 1, "\u00E5" }, { 2, "\u00C5" } }; // å / Å
             altDB["B"] = new Dictionary<int, String> { { 1, "\u222B" }, { 2, "\u0131" } }; // ∫ / ı
+            altDB["C"] = new Dictionary<int, String> { { 1, "\u00E7" }, { 2, "\u00C7" } }; // ç / Ç
             altDB["D"] = new Dictionary<int, String> { { 1, "\u2202" }, { 2, "\u00CE" } }; // ∂ / Î
             altDB["E"] = new Dictionary<int, String> { { 1, "\u00B4" }, { 2, "\u00B4" } }; // ´ / ´
             altDB["F"] = new Dictionary<int, String> { { 1, "\u0192" }, { 2, "\u00CF" } }; // ƒ / Ï
@@ -392,6 +394,7 @@ namespace WinAccentHold
             altDB["L"] = new Dictionary<int, String> { { 1, "\u00AC" }, { 2, "\u00D2" } }; // ¬ / Ò
             altDB["M"] = new Dictionary<int, String> { { 1, "\u00B5" }, { 2, "\u00C2" } }; // µ / Â
             altDB["N"] = new Dictionary<int, String> { { 1, "\u02DC" }, { 2, "\u02DC" } }; // ˜ / ˜
+            altDB["O"] = new Dictionary<int, String> { { 1, "\u00F8" }, { 2, "\u00D8" } }; // ø / Ø
             altDB["P"] = new Dictionary<int, String> { { 1, "\u03C0" }, { 2, "\u220F" } }; // π / ∏
             altDB["Q"] = new Dictionary<int, String> { { 1, "\u0153" }, { 2, "\u0152" } }; // œ / Œ
             altDB["R"] = new Dictionary<int, String> { { 1, "\u00AE" }, { 2, "\u2030" } }; // ® / ‰
