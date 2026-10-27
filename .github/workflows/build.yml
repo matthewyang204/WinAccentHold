@@ -35,6 +35,11 @@ jobs:
       run: |
         curl -LO https://github.com/camthesaxman/exeosver/releases/download/1.0/exeosver.exe
 
+    - name: Install .NET Framework 4.0 targeting pack
+      shell: powershell
+      run: |
+        choco install netfx-4.0 -y
+
     - name: Build project
       working-directory: ${{ github.workspace }}
       run: |
