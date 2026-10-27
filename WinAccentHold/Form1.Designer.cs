@@ -49,28 +49,28 @@
             this.AboutMenuButton,
             this.ExitMenuButton});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(156, 98);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(144, 72);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // AboutMenuButton
             // 
             this.AboutMenuButton.Name = "AboutMenuButton";
-            this.AboutMenuButton.Size = new System.Drawing.Size(155, 36);
+            this.AboutMenuButton.Size = new System.Drawing.Size(143, 34);
             this.AboutMenuButton.Text = "About";
             this.AboutMenuButton.Click += new System.EventHandler(this.AboutMenuButton_Click);
             // 
             // ExitMenuButton
             // 
             this.ExitMenuButton.Name = "ExitMenuButton";
-            this.ExitMenuButton.Size = new System.Drawing.Size(155, 36);
+            this.ExitMenuButton.Size = new System.Drawing.Size(143, 34);
             this.ExitMenuButton.Text = "Exit";
             this.ExitMenuButton.Click += new System.EventHandler(this.ExitMenuButton_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(274, 229);
+            this.ClientSize = new System.Drawing.Size(251, 220);
             this.Name = "Form1";
             this.Text = "Form1";
             this.contextMenuStrip1.ResumeLayout(false);
