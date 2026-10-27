@@ -36,3 +36,6 @@ If manually installing:
 1. Clone the repository
 2. If using Visual Studio, open up the solution at `WinAccentHold\WinAccentHold.sln` and build, selecting the desired configuration before building (Debug or Release)
 3. If building from CLI, change the working directory to the `WinAccentHold` folder within the repository, before running MSBuild (run it with `/?` to display help options, which can guide you in how to select the configuration)
+
+## License
+This program is licensed under the 3rd version of the GNU General Public License. For more information, see `license.txt`.
