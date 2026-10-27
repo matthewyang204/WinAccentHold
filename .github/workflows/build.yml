@@ -1,0 +1,66 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Build with Visual Studio 2022
+
+on:
+  push:
+    branches: [ "master", "testing" ]
+  pull_request:
+    branches: [ "master", "testing" ]
+  workflow_dispatch:
+
+env:
+  # Build the actual WinAccentHold project in Release / AnyCPU.
+  PROJECT_FILE_PATH: WinAccentHold/WinAccentHold.csproj
+  BUILD_CONFIGURATION: Release
+  BUILD_PLATFORM: AnyCPU
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2022
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: Download exeosver
+      run: |
+        curl -LO https://github.com/camthesaxman/exeosver/releases/download/1.0/exeosver.exe
+
+    - name: Build project
+      working-directory: ${{ github.workspace }}
+      run: |
+        msbuild /m /p:Configuration=${{ env.BUILD_CONFIGURATION }} /p:Platform=${{ env.BUILD_PLATFORM }} ${{ env.PROJECT_FILE_PATH }}
+
+    - name: Exeosver the build
+      run: |
+        .\exeosver.exe WinAccentHold\bin\Release\WinAccentHold.exe
+
+    - name: Build Inno Setup installer
+      uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
+      with:
+        path: installer/winaccenthold-setup.iss
+
+    - name: Exeosver the installer
+      run: |
+        .\exeosver.exe installer\Output\WinAccentHold-*-setup.exe
+
+    - name: Upload installer
+      uses: actions/upload-artifact@v4
+      with:
+        name: WinAccentHold-Installer-Output
+        path: installer/Output
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: WinAccentHold-Build-Output
+        path: WinAccentHold
