@@ -1,9 +1,9 @@
 # WinAccentHold
+"Teaching old Windows new Mac tricks"
 [![Demo](https://archive.org/download/misc-objects-storage/winaccenthold-demo.jpg)](https://archive.org/download/misc-objects-storage/winaccenthold-demo.mp4)
 
 <img width="100" alt="designed-for-microsoft-windows-xp-logo" src="https://github.com/user-attachments/assets/cb97213a-3c8b-4c47-b943-b00a04827f8c" />
 <img width="100" height="140" alt="vista-capable-rectangle" src="https://github.com/user-attachments/assets/8273d636-2e46-45d3-8dd7-5089e43cd818" />
-
 
 WinAccentHold is a press-and-hold utility, inserting accents and special symbols when the corresponding key is held down. If the symbol isn't available, there is an additional `Alt+<key>` map layer containing additional symbols. Once the menu comes up, symbols can be selected with the arrow keys, the number keys (either top-row or numpad keys), or the mouse, with it easily being dismissed with `Escape`. It is written in C# with .NET Framework 4.0 and therefore can run on Windows XP and later.
 
@@ -31,6 +31,9 @@ If manually installing:
 1. Download the executable
 2. Put it in a folder, either in `Program Files` or `Public Desktop` if running as admin
 3. Put a shortcut to it in the startup folder. `shell:startup` only works on user programs, so if you want it to run as admin, put it in the system startup folder.
+4. Start the program for the first time, in admin mode if you need it to work with programs with that privilege.
+
+Afterwards, you should be able to use it by pressing and holding keys. See the introduction about information on using it.
 
 ## Building
 1. Clone the repository
