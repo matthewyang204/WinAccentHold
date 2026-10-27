@@ -1,5 +1,5 @@
 # WinAccentHold
-"Teaching old Windows new Mac tricks"
+"Teaching Old Windows New Mac Tricks"
 [![Demo](https://archive.org/download/misc-objects-storage/winaccenthold-demo.jpg)](https://archive.org/download/misc-objects-storage/winaccenthold-demo.mp4)
 
 <img width="100" alt="designed-for-microsoft-windows-xp-logo" src="https://github.com/user-attachments/assets/cb97213a-3c8b-4c47-b943-b00a04827f8c" />
