@@ -19,8 +19,19 @@ namespace WinAccentHold
             WinAccentHold.Visible = true;
             WinAccentHold.Text = "WinAccentHold";
 
+            gameModeSwitch.CheckOnClick = true;
+            gameModeSwitch.Checked = false;
+
             WKeyScore.TriggerKeyChanged += OnKeyTrigger;
             WKeyScore.Start(this);
+
+            gameModeSwitch.CheckedChanged += delegate
+            {
+                if (!gameModeSwitch.Checked)
+                    WKeyScore.Start(this);
+                else
+                    WKeyScore.Stop();
+            };
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
