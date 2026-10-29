@@ -36,8 +36,20 @@ namespace WinAccentHold
             CancelPending();
             
             if (pending != null) { pending.Timer.Dispose(); pending = null; }
-            if (hook != IntPtr.Zero) UnhookWindowsHookEx(hook);
-            hook = IntPtr.Zero; proc = null; owner = null;
+            if (hook != IntPtr.Zero)
+            {
+                if (UnhookWindowsHookEx(hook))
+                {
+                    hook = IntPtr.Zero;
+                    proc = null;
+                }
+                else
+                {
+                    DebugHelper.LogWin32Error("UnhookWindowsHookEx", Marshal.GetLastWin32Error());
+                    return;
+                }
+            }
+            owner = null;
             altDown = false;
         }
 
@@ -136,7 +148,7 @@ namespace WinAccentHold
         delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
         [StructLayout(LayoutKind.Sequential)] struct Kbd { public uint vk, scan, flags, time; public IntPtr extra; }
         [DllImport("user32.dll", SetLastError=true)] static extern IntPtr SetWindowsHookEx(int id, HookProc callback, IntPtr module, uint threadId);
-        [DllImport("user32.dll")] static extern bool UnhookWindowsHookEx(IntPtr hook);
+        [DllImport("user32.dll", SetLastError=true)] static extern bool UnhookWindowsHookEx(IntPtr hook);
         [DllImport("user32.dll")] static extern IntPtr CallNextHookEx(IntPtr hook, int code, IntPtr wParam, IntPtr lParam);
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)] static extern IntPtr GetModuleHandle(string moduleName);
         [DllImport("user32.dll")] static extern short GetKeyState(int key);
