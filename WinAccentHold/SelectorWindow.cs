@@ -112,10 +112,31 @@ namespace WinAccentHold
                 this.Close();
                 if (targetWindow != IntPtr.Zero) SetForegroundWindow(targetWindow);
                 SendKeys.SendWait("{BACKSPACE}");
-                SendKeys.SendWait(selected);
+                SendKeys.SendWait(EscapeSendKeys(selected));
             };
 
             this.buttonPanel.Controls.Add(button);
+        }
+
+        private static string EscapeSendKeys(string value)
+        {
+            StringBuilder escaped = new StringBuilder();
+            foreach (char character in value)
+            {
+                switch (character)
+                {
+                    case '+': escaped.Append("{+}"); break;
+                    case '^': escaped.Append("{^}"); break;
+                    case '%': escaped.Append("{%}"); break;
+                    case '~': escaped.Append("{~}"); break;
+                    case '(': escaped.Append("{(}"); break;
+                    case ')': escaped.Append("{)}"); break;
+                    case '{': escaped.Append("{{}"); break;
+                    case '}': escaped.Append("{}}"); break;
+                    default: escaped.Append(character); break;
+                }
+            }
+            return escaped.ToString();
         }
 
         public void PopulateCharButtons(Dictionary<int, String> characters){

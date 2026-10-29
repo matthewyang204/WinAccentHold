@@ -85,7 +85,9 @@ namespace WinAccentHold
                 AutomationElement focused = AutomationElement.FocusedElement;
                 object value;
                 if (focused == null || !focused.TryGetCurrentPattern(TextPattern.Pattern, out value)) return false;
-                var range = ((TextPattern)value).GetSelection()[0];
+                var selections = ((TextPattern)value).GetSelection();
+                if (selections == null || selections.Length == 0) return false;
+                var range = selections[0];
                 var rectangles = range.GetBoundingRectangles();
                 if (rectangles == null || rectangles.Length == 0) return false;
                 position = new System.Drawing.Point((int)rectangles[0].Left, (int)rectangles[0].Top);
