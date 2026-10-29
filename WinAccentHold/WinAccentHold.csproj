@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="AccentDB.cs" />
     <Compile Include="CaretHelper.cs" />
+    <Compile Include="DebugHelper.cs" />
     <Compile Include="DPIHelper.cs" />
     <Compile Include="About.cs">
       <SubType>Form</SubType>

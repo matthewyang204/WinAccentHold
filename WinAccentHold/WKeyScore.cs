@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace WinAccentHold
 {
@@ -18,10 +19,22 @@ namespace WinAccentHold
             if (hook != IntPtr.Zero) return;
             owner = uiOwner; db = new AccentDB(); proc = Callback;
             using (Process p = Process.GetCurrentProcess()) using (ProcessModule m = p.MainModule) hook = SetWindowsHookEx(Hook, proc, GetModuleHandle(m.ModuleName), 0);
+
+            if (hook == IntPtr.Zero)
+            {
+                int error = Marshal.GetLastWin32Error();
+                proc = null;
+                owner = null;
+                db = null;
+
+                DebugHelper.LogWin32Error("SetWindowsHookEx", error);
+            }
         }
 
         public static void Stop()
         {
+            CancelPending();
+            
             if (pending != null) { pending.Timer.Dispose(); pending = null; }
             if (hook != IntPtr.Zero) UnhookWindowsHookEx(hook);
             hook = IntPtr.Zero; proc = null; owner = null;
@@ -122,7 +135,7 @@ namespace WinAccentHold
         sealed class Pending { public string Letter; public uint Vk; public bool Held; public Timer Timer; public Pending(string l, uint v) { Letter = l; Vk = v; } }
         delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
         [StructLayout(LayoutKind.Sequential)] struct Kbd { public uint vk, scan, flags, time; public IntPtr extra; }
-        [DllImport("user32.dll")] static extern IntPtr SetWindowsHookEx(int id, HookProc callback, IntPtr module, uint threadId);
+        [DllImport("user32.dll", SetLastError=true)] static extern IntPtr SetWindowsHookEx(int id, HookProc callback, IntPtr module, uint threadId);
         [DllImport("user32.dll")] static extern bool UnhookWindowsHookEx(IntPtr hook);
         [DllImport("user32.dll")] static extern IntPtr CallNextHookEx(IntPtr hook, int code, IntPtr wParam, IntPtr lParam);
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)] static extern IntPtr GetModuleHandle(string moduleName);
