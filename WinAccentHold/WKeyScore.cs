@@ -9,7 +9,11 @@ namespace WinAccentHold
     internal static class WKeyScore
     {
         const int Hook = 13, Down = 0x100, Up = 0x101, SysDown = 0x104, SysUp = 0x105, Injected = 0x10, AltDown = 0x20;
-        static IntPtr hook; static HookProc proc; static Control owner; static AccentDB db; static Pending pending;
+        static IntPtr hook;
+        static HookProc proc;
+        static Control owner;
+        static AccentDB db;
+        static Pending pending;
         static bool altDown;
         public static event Action<string, bool> TriggerKeyChanged;
         const int delay = 600;
