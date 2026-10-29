@@ -7,9 +7,6 @@ namespace WinAccentHold
 {
     public static class CaretHelper
     {
-        private const uint GUI_CARETBLINKING = 0x00000001;
-        private const uint GUI_INMOVESIZE = 0x00000002;
-
         [StructLayout(LayoutKind.Sequential)]
         private struct RECT
         {
