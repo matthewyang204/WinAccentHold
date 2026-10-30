@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace WinAccentHold
 {
@@ -111,11 +112,9 @@ namespace WinAccentHold
 
                 this.Close();
                 if (targetWindow != IntPtr.Zero) SetForegroundWindow(targetWindow);
-                Application.DoEvents();
-                System.Threading.Thread.Sleep(50);
+                XPCompatDelay(50);
                 SendKeys.SendWait("{BACKSPACE}");
-                Application.DoEvents();
-                System.Threading.Thread.Sleep(50);
+                XPCompatDelay(50);
                 SendKeys.SendWait(EscapeSendKeys(selected));
             };
 
@@ -163,6 +162,24 @@ namespace WinAccentHold
             }
             this.ClientSize = new Size(Math.Max(200, width), height);
             buttonPanel.PerformLayout();
+        }
+
+        public void XPCompatDelay(int ms)
+        {
+            Application.DoEvents();
+            if (Environment.OSVersion.Version.Major <= 5)
+            {
+                String msg = "Sleeping 50 milliseconds for compatibility on Windows XP and below...";
+                Console.WriteLine(msg);
+                Debug.WriteLine(msg);
+                System.Threading.Thread.Sleep(ms);
+            }
+            else
+            {
+                String msg = "Not sleeping because operating system detected is newer than Windows XP...";
+                Console.WriteLine(msg);
+                Debug.WriteLine(msg);
+            }
         }
     }
 }
