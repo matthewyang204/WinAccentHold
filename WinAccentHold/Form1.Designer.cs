@@ -51,34 +51,35 @@
             this.gameModeSwitch,
             this.ExitMenuButton});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(223, 112);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(131, 70);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // AboutMenuButton
             // 
             this.AboutMenuButton.Name = "AboutMenuButton";
-            this.AboutMenuButton.Size = new System.Drawing.Size(222, 36);
+            this.AboutMenuButton.Size = new System.Drawing.Size(130, 22);
             this.AboutMenuButton.Text = "About";
             this.AboutMenuButton.Click += new System.EventHandler(this.AboutMenuButton_Click);
             // 
             // gameModeSwitch
             // 
             this.gameModeSwitch.Name = "gameModeSwitch";
-            this.gameModeSwitch.Size = new System.Drawing.Size(222, 36);
+            this.gameModeSwitch.Size = new System.Drawing.Size(130, 22);
             this.gameModeSwitch.Text = "Game Mode";
             // 
             // ExitMenuButton
             // 
             this.ExitMenuButton.Name = "ExitMenuButton";
-            this.ExitMenuButton.Size = new System.Drawing.Size(222, 36);
+            this.ExitMenuButton.Size = new System.Drawing.Size(130, 22);
             this.ExitMenuButton.Text = "Exit";
             this.ExitMenuButton.Click += new System.EventHandler(this.ExitMenuButton_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(274, 229);
+            this.ClientSize = new System.Drawing.Size(137, 119);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.contextMenuStrip1.ResumeLayout(false);

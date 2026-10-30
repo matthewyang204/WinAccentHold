@@ -38,9 +38,10 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(0, 275);
+            this.label1.Location = new System.Drawing.Point(0, 149);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(585, 105);
+            this.label1.Size = new System.Drawing.Size(319, 57);
             this.label1.TabIndex = 0;
             this.label1.Text = resources.GetString("label1.Text");
             // 
@@ -48,9 +49,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(61, 215);
+            this.label2.Location = new System.Drawing.Point(33, 116);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(419, 25);
+            this.label2.Size = new System.Drawing.Size(254, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "GNU General Public License Version 3";
             // 
@@ -58,25 +60,28 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(114, 22);
+            this.label3.Location = new System.Drawing.Point(62, 12);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(315, 32);
+            this.label3.Size = new System.Drawing.Size(185, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "WinAccentHold v1.0.0";
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(58, 89);
+            this.label5.Location = new System.Drawing.Point(32, 48);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(471, 28);
+            this.label5.Size = new System.Drawing.Size(257, 15);
             this.label5.TabIndex = 4;
             this.label5.Text = "Home:";
             // 
             // linkLabel1
             // 
-            this.linkLabel1.Location = new System.Drawing.Point(57, 117);
+            this.linkLabel1.Location = new System.Drawing.Point(31, 63);
+            this.linkLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(472, 22);
+            this.linkLabel1.Size = new System.Drawing.Size(257, 12);
             this.linkLabel1.TabIndex = 5;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "https://github.com/matthewyang204/WinAccentHold";
@@ -84,15 +89,16 @@
             // 
             // About
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(586, 549);
+            this.ClientSize = new System.Drawing.Size(320, 297);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "About";
             this.Text = "About WinAccentHold";
             this.ResumeLayout(false);

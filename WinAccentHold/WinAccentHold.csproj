@@ -99,6 +99,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -126,6 +127,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\WinAccentHold.Icon.ico" />
+    <None Include="icons\winaccenthold-icon.ico" />
+    <None Include="icons\winaccenthold-icon-16x16.ico" />
     <Content Include="winaccenthold-icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
