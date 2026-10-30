@@ -111,7 +111,11 @@ namespace WinAccentHold
 
                 this.Close();
                 if (targetWindow != IntPtr.Zero) SetForegroundWindow(targetWindow);
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(50);
                 SendKeys.SendWait("{BACKSPACE}");
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(50);
                 SendKeys.SendWait(EscapeSendKeys(selected));
             };
 
