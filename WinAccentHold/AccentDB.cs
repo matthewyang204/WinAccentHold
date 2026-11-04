@@ -67,7 +67,8 @@ namespace WinAccentHold
             { 2, "\u00CD" }, // Í
             { 3, "\u00CE" }, // Î
             { 4, "\u00CF" }, // Ï
-            { 5, "\u012A" }  // Ī
+            { 5, "\u012A" }, // Ī
+            { 6, "\u01CF" }  // Ǐ - pinyin third tone
         };
 
             mainDB["i"] = new Dictionary<int, String>
@@ -76,7 +77,8 @@ namespace WinAccentHold
             { 2, "\u00ED" }, // í
             { 3, "\u00EE" }, // î
             { 4, "\u00EF" }, // ï
-            { 5, "\u012B" }  // ī
+            { 5, "\u012B" }, // ī
+            { 6, "\u01D0" }  // ǐ - pinyin third tone
         };
 
             mainDB["O"] = new Dictionary<int, String>
@@ -105,18 +107,44 @@ namespace WinAccentHold
         {
             { 1, "\u00D9" }, // Ù
             { 2, "\u00DA" }, // Ú
-            { 3, "\u00DB" }, // Û
+            { 3, "\u01D3" }, // Ǔ - pinyin third tone
             { 4, "\u00DC" }, // Ü
-            { 5, "\u016A" }  // Ū
+            { 5, "\u016A" }, // Ū
+            { 6, "\u01D5" }, // Ǖ
+            { 7, "\u01D7" }, // Ǘ
+            { 8, "\u01D9" }, // Ǚ
+            { 9, "\u01DB" }  // Ǜ
         };
 
             mainDB["u"] = new Dictionary<int, String>
         {
             { 1, "\u00F9" }, // ù
             { 2, "\u00FA" }, // ú
-            { 3, "\u00FB" }, // û
+            { 3, "\u01D4" }, // ǔ - pinyin third tone
             { 4, "\u00FC" }, // ü
-            { 5, "\u016B" }  // ū
+            { 5, "\u016B" }, // ū
+            { 6, "\u01D6" }, // ǖ
+            { 7, "\u01D8" }, // ǘ
+            { 8, "\u01DA" }, // ǚ
+            { 9, "\u01DC" }  // ǜ
+        };
+
+            mainDB["V"] = new Dictionary<int, String>
+        {
+            { 1, "\u01D5" }, // Ǖ
+            { 2, "\u01D7" }, // Ǘ
+            { 3, "\u01D9" }, // Ǚ
+            { 4, "\u01DB" }, // Ǜ
+            { 5, "\u00DC" }  // Ü
+        };
+
+            mainDB["v"] = new Dictionary<int, String>
+        {
+            { 1, "\u01D6" }, // ǖ
+            { 2, "\u01D8" }, // ǘ
+            { 3, "\u01DA" }, // ǚ
+            { 4, "\u01DC" }, // ǜ
+            { 5, "\u00FC" }  // ü
         };
 
             mainDB["N"] = new Dictionary<int, String>
@@ -462,6 +490,7 @@ namespace WinAccentHold
             altDB["U"][5] = "\u0172"; // Ų - ogonek
             altDB["U"][6] = "\u0168"; // Ũ - tilde
             altDB["U"][7] = "\u016C"; // Ŭ - breve
+            altDB["U"][8] = "\u00DB"; // Û - circumflex
             altDB["N"][3] = "\u014A"; // Ŋ - eng
             altDB["N"][4] = "\u01F8"; // Ǹ - grave
 
@@ -483,6 +512,7 @@ namespace WinAccentHold
             altDB["u"][5] = "\u0173"; // ų - ogonek
             altDB["u"][6] = "\u0169"; // ũ - tilde
             altDB["u"][7] = "\u016D"; // ŭ - breve
+            altDB["u"][8] = "\u00FB"; // û - circumflex
             altDB["n"][3] = "\u014B"; // ŋ - eng
             altDB["n"][4] = "\u01F9"; // ǹ - grave
         }
