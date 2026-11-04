@@ -81,6 +81,7 @@ namespace WinAccentHold
             selector.CreateControl();
             selector.Show();
             selector.Update();
+            selector.TopMost = true;
             selector.BringToFront();
             selector.Activate();
         }
